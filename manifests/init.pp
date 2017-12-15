@@ -48,6 +48,11 @@
 #   Enable the use of the Perl module from the UCD-SNMP / NET-SNMP package.
 #   Default: false
 #
+# [*allow_unsafe_regex*]
+#   Allows the use of optional regular expression to perform a search
+#   and replace on the translated FORMAT / EXEC line
+#   Default: false
+#
 # [*description_mode*]
 #   allows you to use the $D substitution variable to include the
 #   description text from the SNMPTT.CONF or MIB files.
@@ -80,6 +85,7 @@ class snmptt (
   $mysql_password          = 'UNSET',
   $trap_files              = ['/etc/snmp/snmptt.conf'],
   $net_snmp_perl_enable    = false,
+  $allow_unsafe_regex      = false,
   $description_mode        = false,
 ) {
   validate_re($ensure, '^(present|absent)$',
@@ -98,6 +104,7 @@ class snmptt (
   $real_unknown_trap_log_enable = bool2num($unknown_trap_log_enable)
   $real_syslog_enable           = bool2num($syslog_enable)
   $real_net_snmp_perl_enable    = bool2num($net_snmp_perl_enable)
+  $real_allow_unsafe_regex      = bool2num($allow_unsafe_regex)
   $real_description_mode        = bool2num($description_mode)
 
   package { 'snmptt':

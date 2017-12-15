@@ -2,7 +2,7 @@
 # This file is managed by puppet
 #
 [General]
-snmptt_system_name = 
+snmptt_system_name =
 mode = <% if @service_enable %>daemon<% else %>standalone<% end %>
 multiple_event = <%= @real_multiple_event %>
 dns_enable = <%= @real_dns_enable %>
@@ -23,7 +23,7 @@ translate_trap_oid_format = 1
 translate_varname_oid_format = 1
 translate_integers = 1
 wildcard_expansion_separator = " "
-allow_unsafe_regex = 0
+allow_unsafe_regex = <%= @real_allow_unsafe_regex %>
 remove_backslash_from_quotes = 0
 dynamic_nodes = 0
 description_mode = <%= @real_description_mode %>
@@ -93,7 +93,7 @@ postgresql_dbi_host = localhost
 postgresql_dbi_port = 5432
 postgresql_dbi_database = snmptt
 postgresql_dbi_table_unknown = snmptt_unknown
-postgresql_dbi_table_statistics = 
+postgresql_dbi_table_statistics =
 postgresql_dbi_table = snmptt
 postgresql_dbi_username = snmpttuser
 postgresql_dbi_password = password
@@ -103,7 +103,7 @@ dbd_odbc_enable = 0
 dbd_odbc_dsn = snmptt
 dbd_odbc_table = snmptt
 dbd_odbc_table_unknown = snmptt_unknown
-dbd_odbc_table_statistics = 
+dbd_odbc_table_statistics =
 dbd_odbc_username = snmptt
 dbd_odbc_password = password
 dbd_odbc_ping_on_insert = 1
@@ -111,13 +111,13 @@ dbd_odbc_ping_interval = 300
 [Exec]
 exec_enable = 1
 pre_exec_enable = 1
-unknown_trap_exec = 
-unknown_trap_exec_format = 
+unknown_trap_exec =
+unknown_trap_exec_format =
 exec_escape = 1
 [Debugging]
 DEBUGGING = 0
-DEBUGGING_FILE = 
-DEBUGGING_FILE_HANDLER = 
+DEBUGGING_FILE =
+DEBUGGING_FILE_HANDLER =
 [TrapFiles]
 snmptt_conf_files = <<END
 <% @trap_files.each do |tfile| -%>
